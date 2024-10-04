@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.min.css">
+
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" th:href="@{/css/register.css}">
+</head>
+
+<body>
+
+    <div class="wrapper" style="background-image: url('/images/bg-registration-form-1.jpg');">
+        <div class="inner">
+            <form th:action="@{/admin/register}" th:object="${admin}" method="POST" enctype="multipart/form-data">
+                <h3>Đăng ký tài khoản</h3>
+                
+                <!-- Hiển thị thông báo lỗi đăng ký nếu có -->
+                <div th:if="${registrationError}" class="alert alert-danger">
+                    <span th:text="${registrationError}"></span>
+                </div>
+                <div th:if="${passwordError}" class="alert alert-danger">
+                    <span th:text="${passwordError}"></span>
+                </div>
+
+                <!-- Nhập Tên -->
+                <div class="form-group">
+                    <input type="text" th:field="*{adminName}" placeholder="Họ và Tên" class="form-control" required>
+                </div>
+                
+                <!-- Nhập Tên đăng nhập -->
+                <div class="form-wrapper">
+                    <input type="text" th:field="*{adminUser}" placeholder="Tên đăng nhập" class="form-control" required>
+                    <i class="zmdi zmdi-account"></i>
+                </div>
+            
+                <!-- Nhập Email -->
+                <div class="form-wrapper">
+                    <input type="email" th:field="*{email}" placeholder="Địa chỉ Email" class="form-control" required>
+                    <i class="zmdi zmdi-email"></i>
+                </div>
+            
+                <!-- Nhập Số điện thoại -->
+                <div class="form-wrapper">
+                    <input type="text" th:field="*{numberPhone}" placeholder="Số điện thoại" class="form-control">
+                    <i class="zmdi zmdi-phone"></i>
+                </div>
+            
+                <!-- Nhập Địa chỉ -->
+                <div class="form-wrapper">
+                    <input type="text" th:field="*{address}" placeholder="Địa chỉ" class="form-control">
+                    <i class="zmdi zmdi-home"></i>
+                </div>
+            
+                <!-- Vị trí -->
+                <div class="form-wrapper">
+                    <input type="text" th:field="*{position}" placeholder="Chức vụ" class="form-control">
+                    <i class="zmdi zmdi-account-box"></i>
+                </div>
+            
+                <!-- Nhập Mật khẩu -->
+                <div class="form-wrapper">
+                    <input type="password" th:field="*{adminPass}" placeholder="Mật khẩu" class="form-control" required>
+                    <i class="zmdi zmdi-lock"></i>
+                </div>
+            
+                <!-- Xác nhận Mật khẩu -->
+                <div class="form-wrapper">
+                    <input type="password" name="confirmPassword" placeholder="Xác nhận mật khẩu" class="form-control" required>
+                    <i class="zmdi zmdi-lock"></i>
+                </div>
+            
+                <!-- Tải lên Avatar (không bắt buộc) -->
+                <div class="form-wrapper">
+                    <input type="file" th:field="*{avatar}" accept="image/*" class="form-control">
+                    <i class="zmdi zmdi-image"></i>
+                </div>
+            
+                <button type="submit">Đăng Ký
+                    <i class="zmdi zmdi-arrow-right"></i>
+                </button>
+            </form>
+        </div>
+    </div>
+    
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

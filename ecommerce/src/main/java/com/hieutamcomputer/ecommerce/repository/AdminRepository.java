@@ -1,0 +1,11 @@
+// src/main/java/com/hieutamcomputer/ecommerce/repository/AdminRepository.java
+
+package com.hieutamcomputer.ecommerce.repository;
+
+import com.hieutamcomputer.ecommerce.model.Admin;
+import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.Optional;
+
+public interface AdminRepository extends JpaRepository<Admin, Long> {
+    Optional<Admin> findByAdminUser(String adminUser);
+}
