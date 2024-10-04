@@ -1,5 +1,3 @@
-// src/main/java/com/hieutamcomputer/ecommerce/config/SecurityConfig.java
-
 package com.hieutamcomputer.ecommerce.config;
 
 import com.hieutamcomputer.ecommerce.service.AdminDetailsService;
@@ -22,7 +20,7 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .authorizeHttpRequests()
+            .authorizeHttpRequests() // Giữ nguyên nếu bạn đang sử dụng Spring Security 6.x
                 .requestMatchers("/admin/register", "/admin/login", "/css/**", "/js/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
